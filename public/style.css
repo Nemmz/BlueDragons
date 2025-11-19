@@ -1,0 +1,36 @@
+#sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #dbe9ee;
+    padding-top: 20px;
+}
+
+header.major{
+    border-bottom: solid 3px #166088;
+    display: inline-block;
+    margin-left: 2em;
+    padding: 0 0.75em 0.5em 0;
+}
+
+.navigation {
+    list-style-type: none;
+    display: block;
+    padding: 0.5em;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #4a6fa5;
+    cursor: default;
+}
+
+.navigation a:hover{
+    color: #166088;
+    font-size: 1.1em;
+}
+

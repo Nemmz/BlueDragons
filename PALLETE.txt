@@ -1,0 +1,14 @@
+Blue Slate
+#4f6d7a
+
+Pale Sky
+#c0d6df
+
+Alice blue
+#dbe9ee
+
+Smart Blue
+#4a6fa5
+
+Baltic Blue
+#166088
