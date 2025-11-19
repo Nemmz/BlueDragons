@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Health Metrics Tracker</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+        /* minimal styles for layout */
+        body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin: 0; }
+        .sidebar { width: 160px; float: left; background: #f4f4f4; height: 100vh; padding: 16px; box-sizing: border-box; }
+        .sidebar a { display: block; margin: 8px 0; color: #333; text-decoration: none; }
+        .main { margin-left: 160px; padding: 20px; }
+        .status { display: flex; gap: 12px; margin-bottom: 18px; }
+        .status > .status { background: #fff; border: 1px solid #e0e0e0; padding: 12px; width: 160px; box-sizing: border-box; border-radius: 6px; }
+        .metric-value { font-size: 1.4em; margin-top: 6px; color: #111; }
+    </style>
+</head>
+<body>
+<div class="sidebar">
+    <a href="#">Dashboard</a>
+    <a href="#">Devices</a>
+    <a href="#">Settings</a>
+</div>
+
+<div class="main">
+    <h1>Dashboard</h1>
+
+    <div class="status">
+        <div class="status" id="total-devices" data-total="15">
+            <h3>Total</h3>
+            <div class="metric-value">-</div>
+        </div>
+
+        <div class="status" id="online-devices">
+            <h3>Online</h3>
+            <div class="metric-value">-</div>
+        </div>
+
+        <div class="status" id="offline-devices">
+            <h3>Offline</h3>
+            <div class="metric-value">-</div>
+        </div>
+
+        <div class="status" id="degraded-devices">
+            <h3>Degraded</h3>
+            <div class="metric-value">-</div>
+        </div>
+    </div>
+
+    <div class="charts">
+        <div class="chart" id="notification-chart">
+            <h3>Notifications</h3>
+        </div>
+        <div class="chart" id="performance-time-chart">
+            <h3>Performance</h3>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="/src/index.js"></script>
+</body>
+</html>
