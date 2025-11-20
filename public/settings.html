@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings UI</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <div class="inner">
+            <!-- Menu -->
+            <nav id="menu">
+                <!-- Zero Monitor Logo -->
+                <div id = "header-logo">
+                    <header class="major">
+                        <h2>Zero Monitor</h2>
+                    </header>
+                </div>
+                <!-- Navigation Buttons -->
+                <ul>
+                    
+                    <a href="dashboard.html">
+                        <div class="nav-div" id="top-div">
+                            <li class="navigation">Dashboard</li>
+                        </div>
+                    </a>
+                    <a href="devices.html">
+                        <div class="nav-div">
+                            <li class="navigation">Devices</li>
+                        </div>
+                    </a>
+                    <a href="settings.html">
+                        <div class="nav-div">
+                            <li class="navigation">Settings</li>
+                        </div>
+                    </a>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <button id="sidebarToggle">&#9776;</button>
+    <div class="main">
+    <h1 style="text-align: center;">Settings</h1>
+    <div class="tabs">
+    <button class="tab-button active" data-tab="general">General / Appearance</button>
+    <button class="tab-button inactive" data-tab="device">Device Configuration</button>
+    <button class="tab-button inactive" data-tab="account">Account</button>
+    <button class="tab-button inactive" data-tab="notifications">Notifications</button>
+    <button class="tab-button inactive" data-tab="accessibility">Accessibility</button>
+  </div>
+
+  <div id="general" class="tab-content active">
+    <h2>General / Appearance Settings</h2>
+    <div class="setting-item">
+      <label for="theme">Theme</label>
+      <select id="theme">
+        <option>Light</option>
+        <option>Dark</option>
+        <option>System Default</option>
+      </select>
+    </div>
+    <div class="setting-item">
+      <label for="font-size">Font Size</label>
+      <input type="range" id="font-size" min="12" max="24" value="16" />
+    </div>
+  </div>
+
+  <div id="device" class="tab-content">
+    <h2>Device Configuration</h2>
+    <div class="setting-item">
+      <label for="device-selection">Device</label>
+      <select id="device-selection">
+        <option>Device001</option>
+        <option>Device002</option>
+        <option>Device003</option>
+        <option>Device004</option>
+        <option>Device005</option>
+        <option>Device006</option>
+        <option>Device007</option>
+        <option>Device008</option>
+        <option>Device009</option>
+      </select>
+    </div>
+    <div class="setting-item">
+      <label for="polling-rate">Polling Rate</label>
+    <input type="range" id="polling-rate" name="points" min="0" max="10">
+    </div>
+    <div class="setting-item">
+        <label for="upper-threshold">Upper Threshold:</label>
+        <input type="number" id="upper-threshold" name="quantity" min="0" max="100" step="5" value="10">
+    </div>
+    <div class="setting-item">
+        <label for="lower-threshold">Lower Threshold:</label>
+        <input type="number" id="lower-threshold" name="quantity" min="0" max="100" step="5" value="10">
+    </div>
+  </div>
+
+  <div id="account" class="tab-content">
+    <h2>Account Settings</h2>
+    <div class="setting-item">
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Enter your username" />
+    </div>
+    <div class="setting-item">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="you@example.com" />
+    </div>
+    <div class="setting-item">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="••••••••" />
+    </div>
+  </div>
+
+  <div id="notifications" class="tab-content">
+    <h2>Notification Settings</h2>
+    <div class="setting-item" style="display: flex;">
+        <label for="notifications-checkbox">Enable Notifications</label>
+        <input type="checkbox" id="notifications-checkbox" style="margin-left: -80px;"/> 
+    </div>
+    <div class="setting-item">
+      <label for="notif-type">Notification Type</label>
+      <select id="notif-type">
+        <option>Email</option>
+        <option>Push</option>
+        <option>SMS</option>
+      </select>
+    </div>
+    <div class="setting-item">
+      <label for="notif-frequency">Frequency</label>
+      <select id="notif-frequency">
+        <option>Instant</option>
+        <option>Daily Digest</option>
+        <option>Weekly</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="accessibility" class="tab-content">
+    <h2>Accessibility Settings</h2>
+    <div class="setting-item" style="display: flex;">
+        <label for="highContrast-checkbox">High Contrast Mode</label>
+        <input type="checkbox" id="highContrast-checkbox" style="margin-left: -80px;"/> 
+    </div>
+    <div class="setting-item" style="display: flex;">
+        <label for="largerFonts-checkbox">Larger Fonts</label>
+        <input type="checkbox" id="largerFonts-checkbox" style="margin-left: -80px;"/> 
+    </div>
+    <div class="setting-item" style="display: flex;">
+        <label for="screenReader-checkbox">Screen Reader Support</label>
+        <input type="checkbox" id="screenReader-checkbox" style="margin-left: -80px;"/> 
+    </div>
+  </div>
+</div>
+<script src="/src/settingsMenu.js"></script>
+<script src="/src/sidebar.js"></script>
+</body>
+</html>

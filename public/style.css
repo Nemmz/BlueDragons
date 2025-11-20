@@ -87,12 +87,12 @@ header.major{
 }
 
 #header-logo{
-    background-color: #cdaeec;
+    background-color: #c7c4f1;
     margin: 15px;
 }
 
 .nav-div{
-    background-color: #74a2e7;
+    background-color: #a4c2f4;
     margin: 20px;
     border-radius: 40px;
 }
@@ -103,7 +103,7 @@ header.major{
 }
 
 .nav-div:hover{
-    background-color: #4a6fa5;
+    background-color: #6495ED
 }
 
 #top-div{
@@ -160,4 +160,127 @@ header.major{
 /* Move button when sidebar is closed */
 #sidebar.closed ~ #sidebarToggle {
     left: 15px;
+}
+
+table, th, td, tr{
+    border: 2px solid black;
+    border-collapse: collapse;
+    padding: 8px;
+}
+
+tr:nth-child(odd) {
+  background-color: #a4c2f4; /* Example: White */
+}
+
+tr:nth-child(even){
+    background-color: #6495ED
+}
+
+table{
+    width: 100%;
+}
+
+th {
+    text-align: left;
+}
+
+.metric-cell {
+    position: relative;
+    cursor: pointer;
+}
+
+.metric-arrow {
+    margin-left: 0px;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.metric-menu {
+    position: absolute;
+    top: 22px;
+    left: 0;
+    background: white;
+    border: 1px solid #888;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    display: none;
+    z-index: 3000;
+}
+
+.metric-menu div {
+    padding: 6px 12px;
+    white-space: nowrap;
+}
+
+.metric-menu div:hover {
+    background-color: #e6e6e6;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 10px 20px;
+    text-align: center;
+    background: #a4c2f4;
+    border: solid 1px black;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    font-size: 16px;
+}
+
+.tab-button:hover {
+    background: #6495ED;
+}
+
+.tab-button.active {
+    background: #6495ED;
+    color: #000;
+    font-weight: bold;
+}
+
+.tab-button.inactive {
+    color: #000000;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    background: #dbe9ee;
+    border: 2px solid black;
+    border-radius: 0 0 4px 4px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Example styles for settings items */
+.setting-item {
+    margin-bottom: 15px;
+}
+
+.setting-item label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.setting-item input, .setting-item select {
+    padding: 5px;
+    width: 200px;
+    }
+
+.gear-link {
+    text-decoration: none;      /* removes underline */
+    color: inherit;              /* keep the same color as its container, or set your own */
+    cursor: pointer;
+}
+
+/* Optional: if you want to make sure hover/active also have no underline */
+.gear-link:hover, .gear-link:active, .gear-link:visited {
+    text-decoration: none;
 }
