@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "start": "npx serve . -p 5173",
+    "nerve": "nerve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "private": true

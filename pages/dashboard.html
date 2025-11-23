@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Health Metrics Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Import Comfortaa font */
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap');
+
+
+        /* -----------------------------------------------------
+           Global
+        ----------------------------------------------------- */
+        body {
+            margin: 0;
+            background: linear-gradient(to bottom right, #e9edf3, #f8f9fb);
+            font-family: 'Comfortaa', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-weight: 300;
+            color: #222;
+            transition: background 0.4s ease;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #111;
+        }
+
+        .main {
+            margin-left: 260px;
+            padding: 35px;
+            transition: margin-left 0.3s ease;
+        }
+
+        /* -----------------------------------------------------
+           Status Cards
+        ----------------------------------------------------- */
+        .status {
+            display: flex;
+            flex-wrap: wrap; /* wrap cards to new row when needed */
+            justify-content: space-between;
+            gap: 22px;
+            margin-bottom: 45px;
+        }
+
+        .status > div {
+            flex: 1 1 200px; /* grow, shrink, min 200px */
+            padding: 28px;
+            border-radius: 18px;
+            text-align: center;
+            color: #fff;
+            font-weight: 600;
+            background: #444; /* default fallback */
+            box-shadow: 6px 6px 15px rgba(0,0,0,0.25),
+            -4px -4px 12px rgba(255,255,255,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .status > div h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .status > div .metric-value {
+            font-size: 2.7rem;
+            margin-top: 8px;
+            font-weight: 700;
+        }
+
+        .status > div:hover {
+            transform: translateY(-6px);
+            box-shadow: 10px 10px 25px rgba(0,0,0,0.23),
+            -6px -6px 18px rgba(255,255,255,0.15);
+        }
+
+        /* Status gradients */
+        #total-devices { background: linear-gradient(135deg, #6c757d, #565d63); }
+        #online-devices { background: linear-gradient(135deg, #28a745, #208837); }
+        #offline-devices { background: linear-gradient(135deg, #dc3545, #b12533); }
+        #degraded-devices { background: linear-gradient(135deg, #fd7e14, #d8650c); }
+
+        /* -----------------------------------------------------
+           Charts
+        ----------------------------------------------------- */
+        .charts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
+        }
+
+        .chart {
+            background: #ffffff;
+            padding: 28px;
+            border-radius: 18px;
+            border: 1px solid #e3e3e3;
+            box-shadow: 4px 4px 12px rgba(0,0,0,0.15),
+            -3px -3px 8px rgba(255,255,255,0.7);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .chart:hover {
+            transform: translateY(-4px);
+            box-shadow: 8px 8px 18px rgba(0,0,0,0.18),
+            -4px -4px 12px rgba(255,255,255,0.75);
+        }
+
+        /* -----------------------------------------------------
+           Tables
+        ----------------------------------------------------- */
+        table, th, td, tr {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 8px;
+        }
+
+        tr:nth-child(odd) { background-color: #a4c2f4; }
+        tr:nth-child(even){ background-color: #6495ED; }
+
+        table { width: 100%; }
+        th { text-align: left; }
+
+        /* -----------------------------------------------------
+           Tabs / Settings UI
+        ----------------------------------------------------- */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap; /* wrap tabs on smaller screens */
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 10px 20px;
+            text-align: center;
+            background: #a4c2f4;
+            border: solid 1px black;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            font-size: 16px;
+        }
+
+        .tab-button:hover { background: #6495ED; }
+        .tab-button.active {
+            background: #6495ED;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background: #dbe9ee;
+            border: 2px solid black;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .tab-content.active { display: block; }
+
+        /* -----------------------------------------------------
+           Responsive adjustments
+        ----------------------------------------------------- */
+        @media (max-width: 900px) {
+            .main {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            .status > div {
+                flex: 1 1 100%; /* full width on small screens */
+            }
+
+            .charts {
+                grid-template-columns: 1fr; /* stack charts */
+            }
+
+            h1 { font-size: 2rem; }
+        }
+
+    </style>
+</head>
+
+<body>
+<!-- Sidebar (copied from devices.html) -->
+<div id="sidebar">
+    <div class="inner">
+        <nav id="menu">
+
+            <div id="header-logo">
+                <header class="major">
+                    <h2>Zero Monitor</h2>
+                </header>
+            </div>
+
+            <ul>
+                <a href="dashboard.html">
+                    <div class="nav-div" id="top-div">
+                        <li class="navigation">Dashboard</li>
+                    </div>
+                </a>
+
+                <a href="devices.html">
+                    <div class="nav-div">
+                        <li class="navigation">Devices</li>
+                    </div>
+                </a>
+
+                <a href="settings.html">
+                    <div class="nav-div">
+                        <li class="navigation">Settings</li>
+                    </div>
+                </a>
+            </ul>
+
+        </nav>
+    </div>
+</div>
+<button id="sidebarToggle">&#9776;</button>
+
+
+<!-- Main Dashboard Content -->
+<div class="main">
+    <h1 style="text-align: center;">Dashboard</h1>
+
+    <div class="status">
+        <div id="total-devices" data-total="15">
+            <h3>Total</h3>
+            <div class="metric-value">-</div>
+        </div>
+
+        <div id="online-devices">
+            <h3>Online</h3>
+            <div class="metric-value">-</div>
+        </div>
+
+        <div  id="offline-devices">
+            <h3>Offline</h3>
+            <div class="metric-value">-</div>
+        </div>
+
+        <div id="degraded-devices">
+            <h3>Degraded</h3>
+            <div class="metric-value">-</div>
+        </div>
+    </div>
+
+    <div class="charts">
+        <div class="chart" id="notification-chart">
+            <h3>Notifications</h3>
+            <div id="notification-log-list" style="
+            height: 250px;
+            overflow-y: auto;
+            background: #fff;
+            padding: 10px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            font-family: system-ui;
+            font-size: 14px;
+        "></div>
+        </div>
+
+        <div class="chart" id="performance-time-chart">
+            <h3>Performance</h3>
+            <canvas id="performanceChart" width="400" height="250"></canvas>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="/src/index.js"></script>
+<script src="/src/sidebar.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="module" src="/src/performanceChart.js"></script>
+
+</body>
+</html>
