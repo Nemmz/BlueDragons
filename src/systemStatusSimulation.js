@@ -19,6 +19,7 @@ export default class SystemStatusSimulator {
         this._render();
     }
 
+
     _locateElements() {
         const ids = ['total-devices', 'online-devices', 'offline-devices', 'degraded-devices'];
         const map = {};
