@@ -304,6 +304,7 @@ tr:nth-child(even) {
     position: absolute;
     top: 22px;
     left: 0;
+    padding: 10px;
     background: white;
     border: 1px solid #888;
     border-radius: 6px;
@@ -416,5 +417,9 @@ a {
 }
 
 .gear-link:hover {
-    color: #6495ED; /* Optional: highlight on hover */
+    color: #757575; /* Optional: highlight on hover */
+}
+
+.metric-menu-data {
+    padding: 8px 10px;
 }
