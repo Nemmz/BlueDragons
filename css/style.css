@@ -397,3 +397,24 @@ body.dark-mode .chart {
     transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
+/* Remove underline from all links */
+a {
+    text-decoration: none;
+    color: inherit; /* Optional: makes links inherit the surrounding text color */
+}
+
+/* Optional: Hover effect for sidebar nav links */
+#sidebar a:hover {
+    text-decoration: none; /* Ensure hover doesn't add underline */
+    color: #000; /* Or your desired hover color */
+}
+
+/* Gear/settings link specific style */
+.gear-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.gear-link:hover {
+    color: #6495ED; /* Optional: highlight on hover */
+}
